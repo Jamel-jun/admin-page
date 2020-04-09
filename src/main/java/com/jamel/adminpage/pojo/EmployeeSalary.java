@@ -21,6 +21,8 @@ public class EmployeeSalary {
     // 奖金
     @TableField("esBonus") private BigDecimal esBonus;
 
+    // 月份
+    @TableField("esDate") private String esDate;
     // 员工Id
     private Integer eId;
 }

@@ -21,6 +21,8 @@ public class CompanySalary {
     // 奖金
     @TableField("csBonus") private BigDecimal csBonus;
 
+    // 月份
+    @TableField("csDate") private String csDate;
     // 公司Id
     private Integer cId;
 }
