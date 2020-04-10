@@ -21,13 +21,13 @@ public class UserController {
     // 登录
     @RequestMapping("/login")
     public String login(@RequestParam("name")String name, @RequestParam("pwd")String pwd, HttpSession session){
-//        QueryWrapper<User> wrapper = new QueryWrapper<>();
-//        wrapper.lambda().eq(User::getName,name);
-//        User user = userService.getOne(wrapper);
-//        if (ObjectUtil.isNotEmpty(user)){
-//            session.setAttribute("user",user);
-//            return "login.html";
-//        }
-        return "redirect:index.html";
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.lambda().eq(User::getName,name);
+        User user = userService.getOne(wrapper);
+        if (ObjectUtil.isNotEmpty(user)){
+            session.setAttribute("user",user);
+            return "redirect:index.html";
+        }
+        return "redirect:login.html";
     }
 }

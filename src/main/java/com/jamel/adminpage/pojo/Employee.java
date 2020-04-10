@@ -1,17 +1,21 @@
 package com.jamel.adminpage.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  * 人员pojo
  */
 @Data
-@TableName(value = "employee")
+@Entity
 public class Employee {
-    @TableId(value = "cId",type = IdType.AUTO)
-    private Integer eId;
-    private String eName;
+    @Id
+    private Integer eid;
+    private String ename;
+
+    @OneToOne(mappedBy = "Cid",cascade = CascadeType.ALL) private Company company;
 }
