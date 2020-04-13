@@ -1,5 +1,7 @@
 package com.jamel.adminpage.controller;
 
+import com.jamel.adminpage.dto.CompanyRespDto;
+import com.jamel.adminpage.dto.Resp;
 import com.jamel.adminpage.pojo.Company;
 import com.jamel.adminpage.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +16,12 @@ import java.util.List;
 @RequestMapping("/company")
 public class CompanyController {
     @Autowired private CompanyService companyService;
+
     // 所有公司
     @GetMapping
-    public List<Company> getAllCompany(){
-        List<Company> list = companyService.list();
-        return list;
+    public Resp<List<CompanyRespDto>> getAllCompany(){
+        List<CompanyRespDto> list = companyService.get();
+        return Resp.success(0,list);
     }
 
     // 增加公司

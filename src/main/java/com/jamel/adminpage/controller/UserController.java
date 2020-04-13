@@ -22,7 +22,7 @@ public class UserController {
     @RequestMapping("/login")
     public String login(@RequestParam("name")String name, @RequestParam("pwd")String pwd, HttpSession session){
         QueryWrapper<User> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(User::getName,name);
+        wrapper.lambda().eq(User::getName,name).eq(User::getPwd,pwd);
         User user = userService.getOne(wrapper);
         if (ObjectUtil.isNotEmpty(user)){
             session.setAttribute("user",user);

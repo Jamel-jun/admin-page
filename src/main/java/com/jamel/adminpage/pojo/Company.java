@@ -1,17 +1,31 @@
 package com.jamel.adminpage.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 /**
  * 公司pojo
  */
-@Data
-@Entity
 public class Company {
-    @Id
+    @TableId(value = "cid",type = IdType.AUTO)
     private Integer cid;
     private String cname;
+
+    public Integer getCid() {
+        return cid;
+    }
+
+    public void setCid(Integer cid) {
+        this.cid = cid;
+    }
+
+    public String getCname() {
+        return cname;
+    }
+
+    public void setCname(String cname) {
+        this.cname = cname;
+    }
 }

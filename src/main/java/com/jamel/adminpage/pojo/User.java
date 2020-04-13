@@ -7,10 +7,33 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @TableName("user")
-@Data
 public class User {
-    @TableId(value = "uId",type = IdType.AUTO)
-    private Integer uId;
+    @TableId(value = "uid",type = IdType.AUTO)
+    private Integer uid;
     @TableField("name") private String name;
     @TableField("pwd") private String pwd;
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
 }

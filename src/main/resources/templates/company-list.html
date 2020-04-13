@@ -54,20 +54,14 @@
                 <form class="layui-form" onsubmit="return false">
                     <input type="hidden" id="uStatus" value="0">
                     <div class="layui-card-body ">
-                        <table class="layui-table" lay-data="{url:'/employee', page:true, id:'test', toolbar:'#toolbarDemo'}" lay-filter="test">
+                        <table class="layui-table" lay-data="{url:'/company', page:true, id:'test', toolbar:'#toolbarDemo'}" lay-filter="test">
                             <thead>
                             <tr>
                                 <th lay-data="{type:'checkbox'}">ID</th>
-                                <th lay-data="{field:'eid', width:80, sort: true}">ID</th>
-                                <th lay-data="{field:'ename', width:120, sort: true, edit: 'text'}">人员名</th>
-                                <th lay-data="{field:'ebasicSalary', width:120, sort: true}">基础薪水</th>
-                                <th lay-data="{field:'ebonus', width:120, sort: true}">奖金</th>
-                                <th lay-data="{field:'tax', width:120, sort: true}">税额</th>
-                                <th lay-data="{field:'insurance', width:120, sort: true}">五险一金</th>
-                                <th lay-data="{field:'actualSalary', width:120, sort: true}">实际发放工资</th>
-                                <th lay-data="{field:'edate', width:120, sort: true}">月份</th>
-                                <th lay-data="{field:'e
-                                id', event:'del', width:105, templet: '#delTpl'}">删除</th>
+                                <th lay-data="{field:'cid', width:80, sort: true}">ID</th>
+                                <th lay-data="{field:'cname', width:120, sort: true, edit: 'text'}">公司名</th>
+                                <th lay-data="{field:'companySalary', width:120, sort: true}">公司所交费用</th>
+                                <th lay-data="{field:'cid', event:'del', width:105, templet: '#delTpl'}">删除</th>
                             </tr>
                             </thead>
                         </table>
@@ -103,21 +97,6 @@
             laydate.render({
                 elem: '#end' //指定元素
             });
-        }
-    );
-</script>
-<script>
-    layui.use('laydate',
-        function() {
-            var laydate = layui.laydate;
-            //执行一个laydate实例
-            laydate.render({
-                elem: '#start' //指定元素
-            });
-            //执行一个laydate实例
-            laydate.render({
-                elem: '#end' //指定元素
-            });
             var date = new Date();
             var day = date.getDate(); //获取当前日(1-31)
             if (day < 20 && day >= 5){
@@ -125,6 +104,8 @@
             }
         }
     );
+</script>
+<script>
     layui.use('form', function(){
         var form = layui.form;
         form.on('switch', function(data){
