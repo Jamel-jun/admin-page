@@ -15,38 +15,8 @@ public class Employee {
     @TableId(value = "eid",type = IdType.AUTO)
     private Integer eid;
     private String ename;
-    // 基础薪水
-    @TableField("ebasicSalary") private Double ebasicSalary;
-    // 奖金
-    private Double ebonus;
-    // 月份
-    private String edate;
 
    private Integer cid;
-
-    public Double getEbasicSalary() {
-        return ebasicSalary;
-    }
-
-    public void setEbasicSalary(Double ebasicSalary) {
-        this.ebasicSalary = ebasicSalary;
-    }
-
-    public Double getEbonus() {
-        return ebonus;
-    }
-
-    public void setEbonus(Double ebonus) {
-        this.ebonus = ebonus;
-    }
-
-    public String getEdate() {
-        return edate;
-    }
-
-    public void setEdate(String edate) {
-        this.edate = edate;
-    }
 
     public Integer getEid() {
         return eid;

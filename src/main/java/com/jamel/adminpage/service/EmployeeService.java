@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface EmployeeService extends IService<Employee> {
     List<EmployeeRespDto> get();
+    List<EmployeeRespDto> get(Integer cid);
 }

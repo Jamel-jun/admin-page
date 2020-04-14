@@ -33,24 +33,24 @@
     <div class="layui-row layui-col-space15">
         <div class="layui-col-md12">
             <div class="layui-card">
-                <div class="layui-card-body ">
-                    <form class="layui-form layui-col-space5">
-                        <div class="layui-inline layui-show-xs-block">
-                            <input class="layui-input" autocomplete="off" placeholder="开始日" name="start" id="start"></div>
-                        <div class="layui-inline layui-show-xs-block">
-                            <input class="layui-input" autocomplete="off" placeholder="截止日" name="end" id="end"></div>
-                        <div class="layui-inline layui-show-xs-block">
-                            <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input"></div>
-                        <div class="layui-inline layui-show-xs-block">
-                            <button class="layui-btn" lay-submit="" lay-filter="sreach">
-                                <i class="layui-icon">&#xe615;</i></button>
-                        </div>
-                    </form>
-                </div>
-                <div class="layui-card-header">
-                    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                    <button class="layui-btn" onclick="xadmin.open('添加用户','./member-add.jsp',600,500)"><i class="layui-icon"></i>添加</button>
-                </div>
+<!--                <div class="layui-card-body ">-->
+<!--                    <form class="layui-form layui-col-space5">-->
+<!--                        <div class="layui-inline layui-show-xs-block">-->
+<!--                            <input class="layui-input" autocomplete="off" placeholder="开始日" name="start" id="start"></div>-->
+<!--                        <div class="layui-inline layui-show-xs-block">-->
+<!--                            <input class="layui-input" autocomplete="off" placeholder="截止日" name="end" id="end"></div>-->
+<!--                        <div class="layui-inline layui-show-xs-block">-->
+<!--                            <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input"></div>-->
+<!--                        <div class="layui-inline layui-show-xs-block">-->
+<!--                            <button class="layui-btn" lay-submit="" lay-filter="sreach">-->
+<!--                                <i class="layui-icon">&#xe615;</i></button>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <div class="layui-card-header">-->
+<!--                    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
+<!--                    <button class="layui-btn" onclick="xadmin.open('添加用户','./member-add.jsp',600,500)"><i class="layui-icon"></i>添加</button>-->
+<!--                </div>-->
                 <form class="layui-form" onsubmit="return false">
                     <input type="hidden" id="uStatus" value="0">
                     <div class="layui-card-body ">
@@ -60,14 +60,14 @@
                                 <th lay-data="{type:'checkbox'}">ID</th>
                                 <th lay-data="{field:'eid', width:80, sort: true}">ID</th>
                                 <th lay-data="{field:'ename', width:120, sort: true, edit: 'text'}">人员名</th>
-                                <th lay-data="{field:'ebasicSalary', width:120, sort: true}">基础薪水</th>
-                                <th lay-data="{field:'ebonus', width:120, sort: true}">奖金</th>
-                                <th lay-data="{field:'tax', width:120, sort: true}">税额</th>
+                                <th lay-data="{field:'cname', width:120, sort: true, edit: 'text'}">所属公司</th>
+                                <th lay-data="{field:'employeeSalary.esbasicSalary', width:120, sort: true,templet:'<div>{{d.employeeSalary.esbasicSalary}}</div>'}">基础薪水</th>
+                                <th lay-data="{field:'employeeSalary.esbonus', width:120, sort: true,templet:'<div>{{d.employeeSalary.esbonus}}</div>'}}">奖金</th>
+                                <th lay-data="{field:'tax', width:120, sort: true}">税费</th>
                                 <th lay-data="{field:'insurance', width:120, sort: true}">五险一金</th>
                                 <th lay-data="{field:'actualSalary', width:120, sort: true}">实际发放工资</th>
-                                <th lay-data="{field:'edate', width:120, sort: true}">月份</th>
-                                <th lay-data="{field:'e
-                                id', event:'del', width:105, templet: '#delTpl'}">删除</th>
+                                <th lay-data="{field:'employeeSalary.esdate', width:190, sort: true,templet:'<div>{{d.employeeSalary.esdate}}</div>'}}">月份</th>
+<!--                                <th lay-data="{field:'eid', event:'del', width:105, templet: '#delTpl'}">删除</th>-->
                             </tr>
                             </thead>
                         </table>
