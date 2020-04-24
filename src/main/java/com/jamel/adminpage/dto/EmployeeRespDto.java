@@ -12,6 +12,16 @@ import com.jamel.adminpage.pojo.EmployeeSalary;
  * 人员pojo
  */
 public class EmployeeRespDto extends Employee {
+    private EmployeeSalaryRespDto employeeSalaryRespDto;
+
+    public EmployeeSalaryRespDto getEmployeeSalaryRespDto() {
+        return employeeSalaryRespDto;
+    }
+
+    public void setEmployeeSalaryRespDto(EmployeeSalaryRespDto employeeSalaryRespDto) {
+        this.employeeSalaryRespDto = employeeSalaryRespDto;
+    }
+
     // 税额
     private Double tax;
     // 五险一金

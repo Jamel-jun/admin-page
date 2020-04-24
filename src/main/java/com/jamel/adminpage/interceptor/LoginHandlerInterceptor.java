@@ -1,6 +1,7 @@
 package com.jamel.adminpage.interceptor;
 
 import cn.hutool.json.JSON;
+import com.jamel.adminpage.mapper.UserMapper;
 import com.jamel.adminpage.pojo.User;
 import com.jamel.adminpage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,26 +17,25 @@ import java.util.concurrent.Executors;
 
 @Component
 public class LoginHandlerInterceptor extends HandlerInterceptorAdapter {
-
     @Autowired
     private UserService userService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if(handler instanceof HandlerMethod) {
-            String method = ((HandlerMethod) handler).getMethod().getName();
-            if ("login.html".equals(method)) {
-                return true;
-            }else if ("login".equals(method)) {
-                return true;
-            }
-            User user = getUser(request, response);
-            if(user == null){
-                //未登录
-                render(response);
-                return false;
-            }
-        }
+        //if(handler instanceof HandlerMethod) {
+        //    String method = ((HandlerMethod) handler).getMethod().getName();
+        //    if ("login.html".equals(method)) {
+        //        return true;
+        //    }else if ("login".equals(method)) {
+        //        return true;
+        //    }
+        //    User user = getUser(request, response);
+        //    if(user == null){
+        //        //未登录
+        //        render(response);
+        //        return false;
+        //    }
+        //}
         return true;
     }
 

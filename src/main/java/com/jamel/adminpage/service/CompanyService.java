@@ -8,4 +8,7 @@ import java.util.List;
 
 public interface CompanyService extends IService<Company> {
     List<CompanyRespDto> get();
+
+    // 所有公司 名字
+    List<CompanyRespDto> get(String cname);
 }
