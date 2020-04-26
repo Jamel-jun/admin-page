@@ -14,10 +14,6 @@ import java.util.List;
 public class CompanyRespDto extends Company {
     // 员工工资支出
     private Double cemployeeSalary;
-    // 税额
-    private Double tax;
-    // 五险一金
-    private Double insurance;
     // 实际支出费用
     private Double actualSalary;
     private CompanySalary companySalary;
@@ -37,22 +33,6 @@ public class CompanyRespDto extends Company {
 
     public void setCemployeeSalary(Double cemployeeSalary) {
         this.cemployeeSalary = cemployeeSalary;
-    }
-
-    public Double getTax() {
-        return tax;
-    }
-
-    public void setTax(Double tax) {
-        this.tax = tax;
-    }
-
-    public Double getInsurance() {
-        return insurance;
-    }
-
-    public void setInsurance(Double insurance) {
-        this.insurance = insurance;
     }
 
     public Double getActualSalary() {

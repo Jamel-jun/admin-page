@@ -8,11 +8,29 @@ public class EmployeeSalary {
     private Double esbonus;
     private String esdate;
     private Integer eid;
+    private Double tax;
     private Double s1;	  //养老保险
     private Double s2;	  //事业保险
     private Double s3;	  //生育保险
     private Double s4;	  //医疗保险
     private Double s5;	  //公积金
+    private String isfafang;
+
+    public String getIsfafang() {
+        return isfafang;
+    }
+
+    public void setIsfafang(String isfafang) {
+        this.isfafang = isfafang;
+    }
+
+    public Double getTax() {
+        return tax;
+    }
+
+    public void setTax(Double tax) {
+        this.tax = tax;
+    }
 
     public Double getS1() {
         return s1;

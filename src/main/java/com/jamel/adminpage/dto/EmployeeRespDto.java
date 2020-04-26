@@ -21,11 +21,6 @@ public class EmployeeRespDto extends Employee {
     public void setEmployeeSalaryRespDto(EmployeeSalaryRespDto employeeSalaryRespDto) {
         this.employeeSalaryRespDto = employeeSalaryRespDto;
     }
-
-    // 税额
-    private Double tax;
-    // 五险一金
-    private Double insurance;
     // 实际发放工资
     private Double actualSalary;
     // 公司名称
@@ -57,19 +52,4 @@ public class EmployeeRespDto extends Employee {
         this.actualSalary = actualSalary;
     }
 
-    public Double getInsurance() {
-        return insurance;
-    }
-
-    public void setInsurance(Double insurance) {
-        this.insurance = insurance;
-    }
-
-    public Double getTax() {
-        return tax;
-    }
-
-    public void setTax(Double tax) {
-        this.tax = tax;
-    }
 }

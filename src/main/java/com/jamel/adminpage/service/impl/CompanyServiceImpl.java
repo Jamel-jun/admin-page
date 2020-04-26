@@ -13,6 +13,7 @@ import com.jamel.adminpage.mapper.UserMapper;
 import com.jamel.adminpage.pojo.Company;
 import com.jamel.adminpage.pojo.CompanySalary;
 import com.jamel.adminpage.pojo.Employee;
+import com.jamel.adminpage.pojo.EmployeeSalary;
 import com.jamel.adminpage.service.CompanySalaryService;
 import com.jamel.adminpage.service.CompanyService;
 import com.jamel.adminpage.service.EmployeeService;
@@ -37,6 +38,14 @@ public class CompanyServiceImpl extends ServiceImpl<CompanyMapper, Company> impl
     private EmployeeService employeeService;
     @Autowired private CompanySalaryService companySalaryService;
 
+    @Override
+    public Integer isfafang(){
+        List<CompanySalary> employeeSalaries = companySalaryService.list();
+        int size = employeeSalaries.stream().map(companySalary -> {
+            return companySalary.getIsfafang().equals("未发放") ? 1 : 0;
+        }).collect(Collectors.toList()).size();
+        return size;
+    }
     // 所有公司
     @Override
     public List<CompanyRespDto> get() {
@@ -52,16 +61,10 @@ public class CompanyServiceImpl extends ServiceImpl<CompanyMapper, Company> impl
                 return actualSalary;
             }).sum();
             companyRespDto.setCemployeeSalary(sum);
+            CompanySalary companySalary1 = companyRespDto.getCompanySalary();
 
-            // 税费
-            companyRespDto.setTax(computeTax(sum));
-
-
-            // 五险一金
-            Double insurance = sum * 0.2;
-            companyRespDto.setInsurance(insurance);
-
-            companyRespDto.setActualSalary(companyRespDto.getTax() + companyRespDto.getInsurance() + companyRespDto.getCemployeeSalary() +companyRespDto.getInsurance());
+            companyRespDto.setActualSalary(companySalary1.getTax() + companyRespDto.getCemployeeSalary() + companySalary1.getS1() +
+                    companySalary1.getS2() + companySalary1.getS3() + companySalary1.getS4() + companySalary1.getS5());
         });
         return companyRespDtoList;
     }
@@ -80,16 +83,10 @@ public class CompanyServiceImpl extends ServiceImpl<CompanyMapper, Company> impl
                 return actualSalary;
             }).sum();
             companyRespDto.setCemployeeSalary(sum);
+            CompanySalary companySalary1 = companyRespDto.getCompanySalary();
 
-            // 税费
-            companyRespDto.setTax(computeTax(sum));
-
-
-            // 五险一金
-            Double insurance = sum * 0.2;
-            companyRespDto.setInsurance(insurance);
-
-            companyRespDto.setActualSalary(companyRespDto.getTax() + companyRespDto.getInsurance() + companyRespDto.getCemployeeSalary() +companyRespDto.getInsurance());
+            companyRespDto.setActualSalary(companySalary1.getTax() + companyRespDto.getCemployeeSalary() + companySalary1.getS1() +
+                    companySalary1.getS2() + companySalary1.getS3() + companySalary1.getS4() + companySalary1.getS5());
         });
         return companyRespDtoList;
     }

@@ -7,6 +7,8 @@ import com.jamel.adminpage.pojo.Company;
 import java.util.List;
 
 public interface CompanyService extends IService<Company> {
+    Integer isfafang();
+
     List<CompanyRespDto> get();
 
     // 所有公司 名字

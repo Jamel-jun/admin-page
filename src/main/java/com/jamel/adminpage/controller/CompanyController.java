@@ -19,6 +19,11 @@ import java.util.List;
 public class CompanyController {
     @Autowired private CompanyService companyService;
 
+    @RequestMapping("/is")
+    public Integer isfafang(){
+        Integer isfafang = companyService.isfafang();
+        return isfafang;
+    }
     // 所有公司
     @PostMapping
     public Resp<List<CompanyRespDto>> getAllCompany(@RequestParam("cname")String cname){

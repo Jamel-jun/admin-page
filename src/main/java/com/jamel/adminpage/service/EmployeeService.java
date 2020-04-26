@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface EmployeeService extends IService<Employee> {
+    Integer isfafang();
+
     // 计算员工的平均工资
     List<EmployeeRespDto> avgSalary();
 

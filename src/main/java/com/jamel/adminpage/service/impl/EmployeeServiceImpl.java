@@ -28,6 +28,15 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
     @Autowired private EmployeeSalaryService employeeSalaryService;
     @Autowired private EmployeeSalaryMapper employeeSalaryMapper;
 
+    @Override
+    public Integer isfafang(){
+        List<EmployeeSalary> employeeSalaries = employeeSalaryMapper.selectList(null);
+        int size = employeeSalaries.stream().map(employeeSalary -> {
+            return employeeSalary.getIsfafang().equals("未发放") ? 1 : 0;
+        }).collect(Collectors.toList()).size();
+        return size;
+    }
+
     // 计算员工的平均工资
     @Override
     public List<EmployeeRespDto> avgSalary(){
@@ -46,15 +55,10 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         List<EmployeeRespDto> employeeRespDtoList = BeanCopyUtils.copyListProperties(employeeList, EmployeeRespDto::new);
         employeeRespDtoList.forEach(employeeRespDto -> {
             EmployeeSalary employeeSalary = employeeSalaryService.getOne(new QueryWrapper<EmployeeSalary>().lambda().eq(EmployeeSalary::getEid,employeeRespDto.getEid()));
-            // 税额
-            Double tax = this.computeTax(employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus());
-            employeeRespDto.setTax(tax);
-            // 五险一金
-            Double insurance = (employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus()) * 0.2;
-            employeeRespDto.setInsurance(insurance);
             // 实际发放工资
-            Double actualSalary = employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus()
-                    - employeeRespDto.getTax() - employeeRespDto.getInsurance();
+            Double actualSalary = employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus() - employeeSalary.getS1()
+                    - employeeSalary.getS2() - employeeSalary.getS3() - employeeSalary.getS4()
+                    - employeeSalary.getS5() - employeeSalary.getTax();
             employeeRespDto.setActualSalary(actualSalary);
             // 公司
             Company company = companyService.getOne(new QueryWrapper<Company>().lambda().eq(Company::getCid, employeeRespDto.getCid()));
@@ -71,15 +75,10 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         List<EmployeeRespDto> employeeRespDtoList = BeanCopyUtils.copyListProperties(employeeList, EmployeeRespDto::new);
         employeeRespDtoList.forEach(employeeRespDto -> {
             EmployeeSalary employeeSalary = employeeSalaryService.getOne(new QueryWrapper<EmployeeSalary>().lambda().eq(EmployeeSalary::getEid,employeeRespDto.getEid()));
-            // 税额
-            Double tax = this.computeTax(employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus());
-            employeeRespDto.setTax(tax);
-            // 五险一金
-            Double insurance = (employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus()) * 0.2;
-            employeeRespDto.setInsurance(insurance);
             // 实际发放工资
-            Double actualSalary = employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus()
-                    - employeeRespDto.getTax() - employeeRespDto.getInsurance();
+            Double actualSalary = employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus() - employeeSalary.getS1()
+                    - employeeSalary.getS2() - employeeSalary.getS3() - employeeSalary.getS4()
+                    - employeeSalary.getS5() - employeeSalary.getTax();
             employeeRespDto.setActualSalary(actualSalary);
             // 公司
             Company company = companyService.getOne(new QueryWrapper<Company>().lambda().eq(Company::getCid, employeeRespDto.getCid()));
@@ -98,15 +97,10 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         List<EmployeeRespDto> employeeRespDtoList = BeanCopyUtils.copyListProperties(employeeList, EmployeeRespDto::new);
         employeeRespDtoList.forEach(employeeRespDto -> {
             EmployeeSalary employeeSalary = employeeSalaryService.getOne(new QueryWrapper<EmployeeSalary>().lambda().eq(EmployeeSalary::getEid,employeeRespDto.getEid()));
-            // 税额
-            Double tax = this.computeTax(employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus());
-            employeeRespDto.setTax(tax);
-            // 五险一金
-            Double insurance = (employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus()) * 0.2;
-            employeeRespDto.setInsurance(insurance);
             // 实际发放工资
-            Double actualSalary = employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus()
-                    - employeeRespDto.getTax() - employeeRespDto.getInsurance();
+            Double actualSalary = employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus() - employeeSalary.getS1()
+                    - employeeSalary.getS2() - employeeSalary.getS3() - employeeSalary.getS4()
+                    - employeeSalary.getS5() - employeeSalary.getTax();
             employeeRespDto.setActualSalary(actualSalary);
             // 公司
             Company company = companyService.getOne(new QueryWrapper<Company>().lambda().eq(Company::getCid, employeeRespDto.getCid()));
@@ -131,15 +125,10 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
             List<EmployeeRespDto> employeeRespDtoList = BeanCopyUtils.copyListProperties(employeeList, EmployeeRespDto::new);
             employeeRespDtoList.forEach(employeeRespDto -> {
                 EmployeeSalary employeeSalary = employeeSalaryService.getOne(new QueryWrapper<EmployeeSalary>().lambda().eq(EmployeeSalary::getEid,employeeRespDto.getEid()));
-                // 税额
-                Double tax = this.computeTax(employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus());
-                employeeRespDto.setTax(tax);
-                // 五险一金
-                Double insurance = (employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus()) * 0.2;
-                employeeRespDto.setInsurance(insurance);
                 // 实际发放工资
-                Double actualSalary = employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus()
-                        - employeeRespDto.getTax() - employeeRespDto.getInsurance();
+                Double actualSalary = employeeSalary.getEsbasicSalary() + employeeSalary.getEsbonus() - employeeSalary.getS1()
+                        - employeeSalary.getS2() - employeeSalary.getS3() - employeeSalary.getS4()
+                        - employeeSalary.getS5() - employeeSalary.getTax();
                 employeeRespDto.setActualSalary(actualSalary);
                 // 公司
                 Company company = companyService.getOne(new QueryWrapper<Company>().lambda().eq(Company::getCid, employeeRespDto.getCid()));
